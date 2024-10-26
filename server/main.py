@@ -1,9 +1,9 @@
 import os
-from dotenv import load_dotenv
-import openai
-
 import sys
-print("Python executable:", sys.executable)
+import openai
+import sounddevice as sd
+import wavio
+from dotenv import load_dotenv
 
 # Load environment variables from the .env file
 load_dotenv()
@@ -11,14 +11,33 @@ load_dotenv()
 # Set the OpenAI API key
 openai.api_key = os.getenv('OPENAI_API_KEY')
 
+def record_audio(duration=5, fs=44100):
+    """
+    Records audio from the microphone for a given duration.
+    :param duration: Recording duration in seconds.
+    :param fs: Sampling frequency.
+    :return: Filename of the recorded audio.
+    """
+    print(f"Recording audio for {duration} seconds...")
+    try:
+        recording = sd.rec(int(duration * fs), samplerate=fs, channels=1, dtype='int16')
+        sd.wait()  # Wait until recording is finished
+        filename = 'recorded_audio.wav'
+        wavio.write(filename, recording, fs, sampwidth=2)
+        print("Recording complete.")
+        return filename
+    except Exception as e:
+        print(f"Error during audio recording: {e}")
+        return None
+
 def transcribe_audio(file_path):
     """Transcribe audio using OpenAI's Whisper API."""
     try:
-        audio_file = open(file_path, 'rb')
-        transcript = openai.Audio.transcribe(
-            model="whisper-1",
-            file=audio_file
-        )
+        with open(file_path, 'rb') as audio_file:
+            transcript = openai.Audio.transcribe(
+                model="whisper-1",
+                file=audio_file
+            )
         return transcript['text']
     except Exception as e:
         print(f"Error during transcription: {e}")
@@ -74,14 +93,34 @@ def detect_spam_call(file_path):
     print(f"\nClassification Result:\n{classification}")
 
 if __name__ == '__main__':
-    # Specify the path to your audio file
-    audio_file_name = 'test_audio2.wav'  # Replace with your audio file name
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    audio_file_path = os.path.join(script_dir, audio_file_name)
+    # Ask the user whether to record audio or use an existing file
+    print("Choose an option:")
+    print("1. Record audio from microphone")
+    print("2. Use existing audio file")
+    choice = input("Enter 1 or 2: ")
 
-    # Check if the audio file exists
-    if not os.path.exists(audio_file_path):
-        print(f"Audio file not found at path: {audio_file_path}")
+    if choice == '1':
+        # Record audio from the microphone
+        duration = input("Enter recording duration in seconds (default is 5): ")
+        if duration.strip() == '':
+            duration = 5
+        else:
+            duration = float(duration)
+        audio_file_name = record_audio(duration=duration)
+    elif choice == '2':
+        # Use an existing audio file
+        audio_file_name = input("Enter the name of the audio file (with extension): ")
+        # Check if the file exists
+        if not os.path.exists(audio_file_name):
+            print(f"Audio file not found at path: {audio_file_name}")
+            sys.exit(1)
     else:
+        print("Invalid choice. Exiting.")
+        sys.exit(1)
+
+    # Proceed if the audio file is available
+    if audio_file_name:
         # Run the spam call detection
-        detect_spam_call(audio_file_path)
+        detect_spam_call(audio_file_name)
+    else:
+        print("No audio file to process. Exiting.")
