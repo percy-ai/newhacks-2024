@@ -75,7 +75,7 @@ def detect_spam_call(file_path):
 
 if __name__ == '__main__':
     # Specify the path to your audio file
-    audio_file_name = 'test_audio.wav'  # Replace with your audio file name
+    audio_file_name = 'test_audio2.wav'  # Replace with your audio file name
     script_dir = os.path.dirname(os.path.abspath(__file__))
     audio_file_path = os.path.join(script_dir, audio_file_name)
 
