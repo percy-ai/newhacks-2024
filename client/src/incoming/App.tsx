@@ -1,26 +1,14 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// Selecting elements for interaction
+const declineButton = document.querySelector('.decline');
+const acceptButton = document.querySelector('.accept');
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+// Event listeners for buttons
+declineButton?.addEventListener('click', () => {
+  alert('Call Declined');
+  // Additional decline logic here
+});
 
-export default App;
+acceptButton?.addEventListener('click', () => {
+  alert('Call Accepted');
+  // Additional accept logic here
+});
