@@ -53,7 +53,7 @@ Transcript:
 {transcribed_text}
 \"\"\"
 
-Please answer with 'spam' or 'legitimate' and provide a brief explanation.
+Please answer with 'scam' or'spam' or 'legitimate' and provide a brief explanation.
 """
     try:
         response = openai.ChatCompletion.create(
