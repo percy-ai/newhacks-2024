@@ -1,14 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './numpad.css';
 
-function App() {
+function Numpad() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.tsx</code> voicemail.
+          Edit <code>src/App.tsx</code> and save to numpad.
         </p>
         <a
           className="App-link"
@@ -23,4 +21,4 @@ function App() {
   );
 }
 
-export default App;
+export default Numpad;
