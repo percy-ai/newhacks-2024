@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Incoming from "./incoming/incoming";
-import Voicemail from "./voicemail/voicemail";
+// import Incoming from "./incoming/incoming";
+// import Voicemail from "./voicemail/voicemail";
 import Numpad from "./numpad/numpad";
 import RealTimeComponent from "./websockets/websockets";
 
