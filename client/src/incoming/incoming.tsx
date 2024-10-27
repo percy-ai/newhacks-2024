@@ -13,7 +13,7 @@ interface Table {
   status: boolean;
 }
 
-function App() {
+function Incoming() {
   const [isAnswering, setIsAnswering] = useState(false);
   const [isDeclining, setIsDeclining] = useState(false);
   const [showControls, setShowControls] = useState(true);
@@ -92,4 +92,4 @@ function App() {
   );
 }
 
-export default App;
+export default Incoming;
