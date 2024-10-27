@@ -1,2 +1,6 @@
+Flask
 openai
 python-dotenv
+sounddevice
+wavio
+numpy
