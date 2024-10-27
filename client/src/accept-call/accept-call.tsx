@@ -19,6 +19,17 @@ function AcceptCall() {
   const [data, setData] = useState(false);
 
   useEffect(() => {
+    const startRecording = async () => {
+      try {
+        await supabase
+          .from("callstatus")
+          .update({ status: false })
+          .eq("id", 1);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+
     const fetchData = async () => {
       try {
         const { data: result, error } = await supabase
@@ -35,6 +46,8 @@ function AcceptCall() {
         console.error("Error:", error);
       }
     };
+
+    startRecording();
 
     fetchData(); // Initial fetch
 
@@ -66,6 +79,17 @@ function AcceptCall() {
   const handleHangUpClick = () => {
     setIsHangingUp(true);
     setSeconds(0); // Optionally reset the timer if desired
+    const endRecording = async () => {
+      try {
+        await supabase
+          .from("callstatus")
+          .update({ status: true })
+          .eq("id", 1);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+    endRecording();
   };
 
   return (
