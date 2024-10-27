@@ -24,7 +24,7 @@ function AcceptCall() {
         await supabase
           .from("callstatus")
           .update({ status: false })
-          .eq("id", 1);
+          .eq("id", 2);
       } catch (error) {
         console.error("Error:", error);
       }
@@ -84,7 +84,7 @@ function AcceptCall() {
         await supabase
           .from("callstatus")
           .update({ status: true })
-          .eq("id", 1);
+          .eq("id", 2);
       } catch (error) {
         console.error("Error:", error);
       }

@@ -122,7 +122,10 @@ def continuous_recording(duration=5):
             # Process the recorded segment
             process_audio_segment(filename, segment_number)
             segment_number += 1
-
+            response = supabase.table('callstatus').select('status').eq('id', 2).execute()
+            if response.data[0]['status'] is True:
+                print('Ending recording')
+                break
             # Remove the temporary file after processing
             os.remove(filename)
 
