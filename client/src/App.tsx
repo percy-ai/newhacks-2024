@@ -14,32 +14,35 @@ function App() {
     <div className="app">
       <Router>
         <Routes>
-          <Route path="/">
-            <nav className="app" hidden={clicked}>
-              <ul>
-                <li>
-                  <Link to="/numpad" onClick={(e) => setClicked(true)}>
-                    Numpad
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/incoming" onClick={(e) => setClicked(true)}>
-                    incoming
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/voicemail" onClick={(e) => setClicked(true)}>
-                    voicemail
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/accept" onClick={(e) => setClicked(true)}>
-                    accept call
-                  </Link>
-                </li>
-              </ul>
-            </nav>
-          </Route>
+          <Route
+            path="/"
+            element={
+              <nav className="app" hidden={clicked}>
+                <ul>
+                  <li>
+                    <Link to="/numpad" onClick={(e) => setClicked(true)}>
+                      Numpad
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/incoming" onClick={(e) => setClicked(true)}>
+                      incoming
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/voicemail" onClick={(e) => setClicked(true)}>
+                      voicemail
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/accept" onClick={(e) => setClicked(true)}>
+                      accept call
+                    </Link>
+                  </li>
+                </ul>
+              </nav>
+            }
+          ></Route>
           <Route path="/incoming" element={<Incoming></Incoming>}></Route>
           <Route path="/voicemail" element={<Voicemail></Voicemail>}></Route>
           <Route path="/numpad" element={<Numpad></Numpad>}></Route>
