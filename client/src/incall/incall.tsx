@@ -27,7 +27,7 @@ function Incall() {
   };
 
   return (
-    <div className="App">
+    <div className="incall">
       <h1>{isMuted ? "Muted" : "Unmuted"}</h1>
       <button onClick={toggleMute}>{isMuted ? "Unmute" : "Mute"}</button>
     </div>
