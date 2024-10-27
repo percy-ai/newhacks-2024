@@ -71,7 +71,7 @@ function AcceptCall() {
           </div>
           <div className="button-container">
             <div className="button">
-              <img src="/FaceTime.png" alt="FaceTime" className="button-icon" />
+              <img src="/facetime.png" alt="FaceTime" className="button-icon" />
             </div>
             <span className="button-label">FaceTime</span>
           </div>
