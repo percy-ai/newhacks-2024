@@ -1,15 +1,53 @@
-import React, { useState, useEffect } from 'react';
-import './accept-call.css';
+import React, { useState, useEffect } from "react";
+import "./accept-call.css";
+import { createClient, SupabaseClient } from "@supabase/supabase-js";
+
+const supabase: SupabaseClient = createClient(
+  "https://gldvgrcsiwscznrzcgxe.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdsZHZncmNzaXdzY3pucnpjZ3hlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjk5NzYzMTQsImV4cCI6MjA0NTU1MjMxNH0.YAhY2yXpVLxRFErP2XS-4FhRGfFZ2BSgdSXuLdQql3U"
+);
+
+interface Table {
+  id: number;
+  created_at: string;
+  status: boolean;
+}
 
 function AcceptCall() {
   const [isHangingUp, setIsHangingUp] = useState(false);
   const [seconds, setSeconds] = useState(0);
+  const [data, setData] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data: result, error } = await supabase
+          .from("callstatus")
+          .select()
+          .eq("id", 1);
+
+        if (error) {
+          console.error("Error fetching data:", error);
+        } else {
+          setData(result[0].status);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+
+    fetchData(); // Initial fetch
+
+    const interval = setInterval(fetchData, 1000); // Fetch every second
+
+    return () => clearInterval(interval); // Clear interval on component unmount
+  }, []);
 
   // Function to format seconds into MM:SS format
   const formatTime = (seconds: number): string => {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
-    return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+    return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
   };
 
   // Start the timer
@@ -37,10 +75,12 @@ function AcceptCall() {
           <div>10:37</div>
           <div>📶 🔋</div>
         </div>
-
+        <div>{data ? "Safe" : "⚠️ Spam/Scam ⚠️"}</div>
         <div className="call-details">
           +1 (437) 887 2659
-          <div className="calling-text">{isHangingUp ? 'Call ended' : formatTime(seconds)}</div>
+          <div className="calling-text">
+            {isHangingUp ? "Call ended" : formatTime(seconds)}
+          </div>
         </div>
 
         {/* Main button group with images and labels */}
@@ -86,7 +126,9 @@ function AcceptCall() {
         {/* Hang-up button positioned separately with click effect */}
         <div className="end-call-container">
           <div
-            className={`button end-call ${isHangingUp ? 'end-call-clicked' : ''}`}
+            className={`button end-call ${
+              isHangingUp ? "end-call-clicked" : ""
+            }`}
             onClick={handleHangUpClick}
           >
             <img src="/decline.png" alt="End Call" className="button-icon" />
