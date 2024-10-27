@@ -1,38 +1,141 @@
-.App {
-  text-align: center;
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+  background-color: #FFFFFF; /* White background */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Optional: prevents scrolling if not needed */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.keypad {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center; /* Center the buttons horizontally */
+  justify-content: center; /* Center the buttons vertically */
+  border-radius: 20px;
+  /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); */
+  background-color: #FFFFFF;
+  padding: 20px;
+  padding-bottom: 500px;
+
+}
+
+.everything {
+  display: flex;
+}
+
+.whiteBox {
   color: white;
+  height: 90px;
 }
 
-.App-link {
-  color: #61dafb;
+.container {
+display: flex;
+flex: 1;
+flex-direction: column;
+background-color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.row {
+  display: flex;
+  justify-content: center; /* Center the row of buttons */
+}
+
+
+.circle-button {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+width: 60px;
+height: 60px;
+border-radius: 50%;
+background-color: #E5E5E5; /* Light gray background */
+font-size: 8px;
+border: none;
+cursor: pointer;
+text-align: center;
+margin: 6px;
+line-height: 0.8;
+}
+
+.number_show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  color: black;
+  height: 80px;
+  padding-top: 200px;
+}
+
+.circle-button .number {
+font-size: 24px;
+color: black;
+/*font-weight: bold;*/
+margin-bottom: 10px;
+}
+
+.circle-button .text {
+margin-top: 5px;
+display: block;
+font-size: 9px;
+color: black;
+}
+
+.circle-button .aster {
+align-items: flex-end; /* Align items to the bottom */
+justify-content: center;
+align-items: center;
+font-size: 40px;
+line-height: 0.0px;
+padding: 0px;
+color: black;
+}
+
+#circle-button {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+width: 60px;
+height: 60px;
+border-radius: 50%;
+background-color: #E5E5E5; /* Light gray background */
+font-size: 8px;
+border: none;
+cursor: pointer;
+text-align: center;
+margin: 6px;
+line-height: 0.8;
+}
+
+.backspace {
+  justify-content: flex-end;
+}
+
+.circle-button .plus {
+font-size: 15px;
+line-height: 1.0 px;
+color: black;
+}
+.key:hover {
+  background-color: #0056b3;
+}
+
+.call {
+  border-radius: 0;
+  color: white;
+  box-shadow: 0;
+  box-shadow: none;
+  border: none;
+}
+
+.call:hover {
+  color: white;
+  border: none;
 }

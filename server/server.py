@@ -130,12 +130,12 @@ def continuous_recording(duration=5):
         print("\nContinuous recording stopped by user.")
 
 
-# response = (
-#     supabase.table("callstatus")
-#     .update({"status": False})
-#     .eq("id", 1)
-#     .execute()
-# )
+response = (
+    supabase.table("callstatus")
+    .update({"status": False})
+    .eq("id", 1)
+    .execute()
+)
 
 
 app.run(port=5000)
