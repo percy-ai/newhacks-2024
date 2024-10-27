@@ -6,6 +6,7 @@ import Voicemail from "./voicemail/voicemail";
 import Numpad from "./numpad/numpad";
 import RealTimeComponent from "./websockets/websockets";
 import Incall from "./incall/incall";
+import AcceptCall from "./accept-call/accept-call";
 
 function App() {
   const [clicked, setClicked] = useState(false);
@@ -29,6 +30,11 @@ function App() {
                 voicemail
               </Link>
             </li>
+            <li>
+              <Link to="/accept" onClick={(e) => setClicked(true)}>
+                accept call
+              </Link>
+            </li>
           </ul>
         </nav>
         <Routes>
@@ -41,6 +47,7 @@ function App() {
             element={<RealTimeComponent></RealTimeComponent>}
           ></Route>
           <Route path="/call" element={<Incall></Incall>}></Route>
+          <Route path="/accept" element={<AcceptCall></AcceptCall>}></Route>
         </Routes>
       </Router>
     </div>

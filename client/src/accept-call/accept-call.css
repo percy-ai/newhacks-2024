@@ -1,0 +1,134 @@
+/* accept-call.css */
+
+/* Main container styles */
+.accept-call-container {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-image: url("assets/background.jpg");
+    background-size: cover;
+    background-position: center;
+    color: white;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Screen styling */
+.accept-call-container .call-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ccc;
+    width: 100vw;
+    height: 100vh;
+    padding: 40px 20px 20px;
+    background-color: rgba(44, 44, 46, 0.85);
+    backdrop-filter: blur(10px);
+    position: relative;
+    justify-content: center;
+}
+
+/* Status bar at the top */
+.accept-call-container .status-bar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 14px;
+    color: #ccc;
+    padding: 10px 20px;
+    position: absolute;
+    top: 0;
+}
+
+/* Centered caller info */
+.accept-call-container .call-details {
+    font-size: 32px;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 100px;
+}
+
+.accept-call-container .calling-text {
+    font-size: 16px;
+    color: #888;
+    margin-top: 5px;
+}
+
+/* Button container for alignment */
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Center the main buttons with extra spacing */
+.accept-call-container .buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    justify-items: center;
+    margin-bottom: 20px;
+}
+
+/* Updated button styling with icon and label */
+.accept-call-container .button {
+    background-color: transparent;
+    opaque: 0.9;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.4s;
+}
+
+.accept-call-container .button:hover {
+    background-color: rgba(85, 85, 85, 0.9);
+}
+
+/* Icon inside the button */
+.button-icon {
+    width: 30px;
+    height: 30px;
+}
+
+/* Label text positioned below each button */
+.button-label {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #ccc;
+    text-align: center;
+}
+
+/* Hang-up button positioned separately below main buttons */
+.accept-call-container .end-call-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.accept-call-container .end-call {
+    background-color: #ff3b30;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+}
+
+.accept-call-container .end-call:hover {
+    background-color: #ff1c1c;
+}
+
+/* Gray background when the hang-up button is clicked */
+.accept-call-container .end-call-clicked {
+    background-color: gray !important;
+}
+
