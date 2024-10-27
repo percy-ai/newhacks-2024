@@ -57,7 +57,7 @@ function App() {
   return (
     <div className="call-screen">
       <div className="name">+1 (437) 887 2659</div>
-      <div className="name2">{data ? "Scam/Spam" : "Not Scam/Spam"}</div>
+      <div className="name2">{data ? "⚠️ Scam/Spam ⚠️" : "Not Scam/Spam"}</div>
       <div className="bottom-container">
         <div className="options">
           <div className="option">
