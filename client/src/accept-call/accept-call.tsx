@@ -21,10 +21,7 @@ function AcceptCall() {
   useEffect(() => {
     const startRecording = async () => {
       try {
-        await supabase
-          .from("callstatus")
-          .update({ status: false })
-          .eq("id", 2);
+        await supabase.from("callstatus").update({ status: false }).eq("id", 2);
       } catch (error) {
         console.error("Error:", error);
       }
@@ -81,10 +78,7 @@ function AcceptCall() {
     setSeconds(0); // Optionally reset the timer if desired
     const endRecording = async () => {
       try {
-        await supabase
-          .from("callstatus")
-          .update({ status: true })
-          .eq("id", 2);
+        await supabase.from("callstatus").update({ status: true }).eq("id", 2);
       } catch (error) {
         console.error("Error:", error);
       }
@@ -99,7 +93,7 @@ function AcceptCall() {
           <div>10:37</div>
           <div>📶 🔋</div>
         </div>
-        <div>{data ? "Safe" : "⚠️ Spam/Scam ⚠️"}</div>
+        <div>{data ? "⚠️ Spam/Scam ⚠️" : "Safe"}</div>
         <div className="call-details">
           +1 (437) 887 2659
           <div className="calling-text">
