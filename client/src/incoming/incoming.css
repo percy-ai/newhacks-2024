@@ -23,6 +23,16 @@ body {
     text-align: center;
     width: 100%;
 }
+.call-screen .name2 {
+    font-size: 1.8em;
+    font-weight: 20;
+    position: absolute;
+    top: 15%; /* Position near the top */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 100%;
+}
 
 .bottom-container {
     position: absolute;

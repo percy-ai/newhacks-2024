@@ -7,14 +7,14 @@ const supabase: SupabaseClient = createClient(
 );
 
 // Define the type for your table's data
-interface YourTableName {
+interface Table {
   id: number;
   created_at: string;
   status: boolean;
 }
 
 const RealTimeComponent: React.FC = () => {
-  const [data, setData] = useState<YourTableName[] | null>(null);
+  const [data, setData] = useState<Table[] | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
